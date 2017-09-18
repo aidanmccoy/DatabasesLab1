@@ -30,7 +30,6 @@ public class dataSort {
 
 			Student tempStudent = new Student(stLastName, stFirstName, grade, classroom, bus, gpa, tLastName,
 					tFirstName);
-			// tempStudent.print();
 
 			students.add(tempStudent);
 		}
@@ -75,11 +74,15 @@ public class dataSort {
 						break;
 
 					case 'A':
-
+						key = fullCommand.substring(3);
+						GetAverage(students, Integer.parseInt(key));
 						break;
+
 					case 'I':
+						Info(students);
 						break;
 					case 'Q':
+						System.exit(0);
 						break;
 					default:
 						System.out.println("Invalid Command...");
@@ -89,14 +92,6 @@ public class dataSort {
 			} catch (Exception e) {
 				System.out.println("Invalid Command");
 			}
-		}
-	}
-
-	public static boolean CheckFormat(String command) {
-		if ((!(command.charAt(1) == ':')) || command.length() < 4 || !(command.charAt(2) == ' ')) {
-			return false;
-		} else {
-			return true;
 		}
 	}
 
@@ -160,13 +155,13 @@ public class dataSort {
 				}
 			}
 		}
-		System.out.println(lStudent.getStLastName() + ", " + lStudent.getStFirstName()
-				+ ", " + lStudent.getGpa() + ", " + lStudent.gettLastName() + ", " 
-				+ lStudent.gettFirstName() + ", " + lStudent.getBus());
+		System.out.println(lStudent.getStLastName() + ", " + lStudent.getStFirstName() + ", " + lStudent.getGpa() + ", "
+				+ lStudent.gettLastName() + ", " + lStudent.gettFirstName() + ", " + lStudent.getBus());
 		System.out.println("---------------------------");
 	}
 
 	private static void SearchGradeHigh(ArrayList<Student> students, int key) {
+
 		Student hStudent = null;
 		for (Student student : students) {
 			if (student.getGrade() == key) {
@@ -179,10 +174,60 @@ public class dataSort {
 				}
 			}
 		}
-		System.out.println(hStudent.getStLastName() + ", " + hStudent.getStFirstName()
-				+ ", " + hStudent.getGpa() + ", " + hStudent.gettLastName() + ", " 
-				+ hStudent.gettFirstName() + ", " + hStudent.getBus());
+		System.out.println(hStudent.getStLastName() + ", " + hStudent.getStFirstName() + ", " + hStudent.getGpa() + ", "
+				+ hStudent.gettLastName() + ", " + hStudent.gettFirstName() + ", " + hStudent.getBus());
 		System.out.println("---------------------------");
 	}
 
+	private static void GetAverage(ArrayList<Student> students, int key) {
+		double total = 0;
+		int numStudents = 0;
+		for (Student student : students) {
+			if (student.getGrade() == key) {
+				total = total + student.getGpa();
+				numStudents++;
+			}
+		}
+		System.out.println("The average GPA for grade " + key + " is " + (total / numStudents));
+		System.out.println("---------------------------");
+	}
+
+	private static void Info(ArrayList<Student> students) {
+		int kindergarten = 0, first = 0, second = 0, third = 0, fourth = 0, fifth = 0, sixth = 0;
+		for (Student student : students) {
+			switch (student.getGrade()) {
+			case 0:
+				kindergarten++;
+				break;
+			case 1:
+				first++;
+				break;
+			case 2:
+				second++;
+				break;
+			case 3:
+				third++;
+				break;
+			case 4:
+				fourth++;
+				break;
+			case 5:
+				fifth++;
+				break;
+			case 6:
+				sixth++;
+				break;
+			default:
+				break;
+			}
+		}
+		System.out.println("0: " + kindergarten);
+		System.out.println("1: " + first);
+		System.out.println("2: " + second);
+		System.out.println("3: " + third);
+		System.out.println("4: " + fourth);
+		System.out.println("5: " + fifth);
+		System.out.println("6: " + sixth);
+		System.out.println("---------------------------");
+	}
 }
