@@ -7,7 +7,13 @@ public class dataSort {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner sc = new Scanner(System.in);
-		Scanner fs = new Scanner(new File("students.txt"));
+		try {
+			Scanner fs = new Scanner(new File("students.txt"));
+		}
+		catch (Exception e) {
+			System.out.println("Error opening the file...Quitting...");
+			System.exit(-1);
+		}
 
 		ArrayList<Student> students = new ArrayList();
 
