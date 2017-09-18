@@ -30,52 +30,59 @@ public class dataSort {
 
 			Student tempStudent = new Student(stLastName, stFirstName, grade, classroom, bus, gpa, tLastName,
 					tFirstName);
-			//tempStudent.print();
+			// tempStudent.print();
 
 			students.add(tempStudent);
 		}
-
 		while (true) {
-			System.out.println("Enter next search");
-			fullCommand = sc.nextLine();
-			action = fullCommand.charAt(0);
-			if (fullCommand.length() > 0) {
-				switch (action) {
-				case 'S':
-					if (CheckFormat(fullCommand)) {
-						if (fullCommand.charAt(fullCommand.length() - 1) == 'B') {
-							key = fullCommand.substring(3, fullCommand.length() - 2);
-							SearchStudentBus(students, key);
+			try {
+				System.out.println("Enter next search");
+				fullCommand = sc.nextLine();
+				action = fullCommand.charAt(0);
+				if (fullCommand.length() > 0) {
+					switch (action) {
+					case 'S':
+						if (CheckFormat(fullCommand)) {
+							if (fullCommand.charAt(fullCommand.length() - 1) == 'B') {
+								key = fullCommand.substring(3, fullCommand.length() - 2);
+								SearchStudentBus(students, key);
+							}
+							key = fullCommand.substring(3);
+							SearchStudent(students, key);
 						}
-						key = fullCommand.substring(3);
-						SearchStudent(students, key);
-					}
-					break;
-				case 'T':
-					if (CheckFormat(fullCommand)) {
-						key = fullCommand.substring(3);
-						SearchTeacher(students, key);
-					}
-					break;
-				case 'B':
+						break;
+					case 'T':
+						if (CheckFormat(fullCommand)) {
+							key = fullCommand.substring(3);
+							SearchTeacher(students, key);
+						}
+						break;
+					case 'B':
+						if (CheckFormat(fullCommand)) {
+							key = fullCommand.substring(3);
+						}
 
-					break;
-				case 'G':
-					if (CheckFormat(fullCommand)) {
-						key = fullCommand.substring(3);
-						SearchGrade(students, Integer.parseInt(key));
+						break;
+					case 'G':
+						if (CheckFormat(fullCommand)) {
+							key = fullCommand.substring(3);
+							SearchGrade(students, Integer.parseInt(key));
+						}
+						break;
+					case 'A':
+						break;
+					case 'I':
+						break;
+					case 'Q':
+						break;
+					default:
+						System.out.println("Invalid Command...");
+						break;
 					}
-					break;
-				case 'A':
-					break;
-				case 'I':
-					break;
-				case 'Q':
-					break;
-				default:
-					System.out.println("Invalid Command...");
-					break;
 				}
+			}
+			catch (Exception e) {
+				System.out.println("Invalid Command");
 			}
 		}
 	}
