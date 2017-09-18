@@ -1,0 +1,148 @@
+// CSC 365. Fall 2017
+// Aidan McCoy & Nicholas Ilog
+// Lab 1-1 Test Suite
+
+// TC - 1
+// Tests Requirements R3, R4
+// short form command name, existing student
+// expected output: HAVIR, BOBBIE, 2, 108, HMAER, GAVIN
+
+S: HAVIR
+
+// TC - 2
+// Tests Requirements R3, R4
+// short form command name, non-existing student
+// expected output: <empty line>
+
+S: DEKHTYAR
+
+// TC - 3
+// Tests Requirements R3, R5
+// short form command name, existing student with B command
+// expected output: CORKER, CARTER, 53
+
+S: CORKER B
+
+// TC - 4
+// Tests Requirements R3, R5
+// short form command name, non-existing student with B command
+// expected output: <empty line>
+
+S: DEKHTYAR B
+
+// TC - 5
+// Tests Requirements R3, R6
+// short form command name, existing teacher
+// expected output: COOKUS, XUAN
+//                  ELHADDAD, SHANTE
+//		    SWEDLUND, SHARRI
+//		    CIGANEK, MANIE
+//		    COVINGTON, TOMAS
+//		    EARLY, TORY
+//                  LINHART, LELA
+
+T: FAFARD
+
+// TC - 6
+// Tests Requirements R3, R6
+// short form command name, non-existing teacher
+// expected output: <empty line>
+
+T: SMITH
+
+// TC - 7
+// Tests Requirements R3, R7
+// short form command name, existing grade number
+// expected output: CORKER, CARTER
+//                  IMMERMAN, DEVIN
+//                  RAPOSE, ALONZO
+//                  WORBINGTON, DEEDRA
+//                  OGAS, ERVIN
+//                  SPANICEK, KENDRA
+//                  GUICE, CODI
+//                  GLOR, HUNG
+//                  GUM, NOAH
+//                  MASSART, ELDON
+//                  NOVICK, ROLLAND
+//                  DURAND, CARLEE
+//                  BEX, TAMESHA
+//                  DELUNA, KRYSTAL
+//                  COMO, ZANDRA
+
+G: 4
+
+// TC - 8
+// Tests Requirements R3, R7
+// short form command name, non-existing grade number
+// expected output: <empty line>
+
+G: 7
+
+// TC - 9
+// Tests Requirements R3, R8
+// short form command name, existing bus number
+// expected output: WOOLERY, NOLAN, 2, 104
+//                  STERBACK, PETER, 6, 111
+//                  LIBRANDI, TODD, 2, 108
+//                  RAPOSE, ALONZO, 4, 105
+//                  COVINGTON, TOMAS, 3, 107
+//                  MULLINGS, LEIGHANN, 2, 108
+//                  DURAND, CARLEE, 4, 101
+//                  FRIEDSTROM, REED, 6, 106
+
+B: 51
+
+// TC - 10
+// Tests Requirements R3, R8
+// short form command name, non-existing bus number
+// expected output: <empty line>
+
+B: 70
+
+// TC - 11
+// Tests Requirements R3, R9
+// short form command name, existing grade with H command
+// expected output: LAMKIN, TAMA, 3.23, NISTENDIRK, NANCY, 55
+
+G: 6 H
+
+// TC - 12
+// Tests Requirements R3, R9
+// short form command name, existing grade with L command
+// expected output: KRAKE, VALENTIN, 2.78, GAMBREL, JAE, 56
+
+G: 6 L
+
+// TC - 13
+// Tests Requirements R3, R10
+// short form command name, existing grade
+// expected output: 6, 2.977
+
+A: 6
+
+// TC - 14
+// Tests Requirements R3, R10
+// short form command name, non-existing grade
+// expected output: <empty line>
+
+A: 7
+
+// TC - 15
+// Tests Requirements R3, R11
+// short form command name
+// expected output: 0: 0
+//                  1: 2
+//                  2: 13
+//                  3: 18
+//                  4: 30
+//                  5: 0
+//                  6: 21
+
+I
+
+// TC - 16
+// Tests Requirements R3, R12
+// short form command name
+// expected output: program exits
+
+Q
