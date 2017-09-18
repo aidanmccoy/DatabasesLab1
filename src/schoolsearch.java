@@ -3,17 +3,12 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class dataSort {
+public class schoolsearch {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner sc = new Scanner(System.in);
-		try {
-			Scanner fs = new Scanner(new File("students.txt"));
-		}
-		catch (Exception e) {
-			System.out.println("Error opening the file...Quitting...");
-			System.exit(-1);
-		}
+		Scanner fs = new Scanner(new File("students.txt"));
+	
 
 		ArrayList<Student> students = new ArrayList();
 
