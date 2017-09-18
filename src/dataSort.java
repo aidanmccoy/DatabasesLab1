@@ -5,40 +5,6 @@ import java.util.Scanner;
 
 public class dataSort {
 
-	public static boolean CheckFormat(String command) {
-		if ((!(command.charAt(1) == ':')) || command.length() < 4 || !(command.charAt(2) == ' ')) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	public static void SearchStudent(ArrayList<Student> students, String lastName) {
-		for (Student student : students) {
-			if (student.getStLastName().equals(lastName)) {
-				System.out.println(student.getStLastName() + ", " + student.getStFirstName() + ", " + student.getGrade()
-						+ ", " + student.getClassroom() + ", " + student.gettLastName() + ", "
-						+ student.gettFirstName());
-			}
-		}
-	}
-
-	public static void SearchStudentBus(ArrayList<Student> students, String key) {
-		for (Student student : students) {
-			if (student.getStLastName().equals(key)) {
-				System.out.println(student.getStLastName() + ", " + student.getStFirstName() + ", " + student.getBus());
-			}
-		}
-	}
-
-	public static void SearchTeacher(ArrayList<Student> students, String key) {
-		for (Student student : students) {
-			if (student.gettLastName().equals(key)) {
-				System.out.println(student.getStLastName() + ", " + student.getStFirstName());
-			}
-		}
-	}
-	
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		Scanner fs = new Scanner(new File("students.txt"));
@@ -64,7 +30,7 @@ public class dataSort {
 
 			Student tempStudent = new Student(stLastName, stFirstName, grade, classroom, bus, gpa, tLastName,
 					tFirstName);
-			tempStudent.print();
+			//tempStudent.print();
 
 			students.add(tempStudent);
 		}
@@ -92,8 +58,13 @@ public class dataSort {
 					}
 					break;
 				case 'B':
+
 					break;
 				case 'G':
+					if (CheckFormat(fullCommand)) {
+						key = fullCommand.substring(3);
+						SearchGrade(students, Integer.parseInt(key));
+					}
 					break;
 				case 'A':
 					break;
@@ -109,5 +80,49 @@ public class dataSort {
 		}
 	}
 
-	
+	public static boolean CheckFormat(String command) {
+		if ((!(command.charAt(1) == ':')) || command.length() < 4 || !(command.charAt(2) == ' ')) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public static void SearchStudent(ArrayList<Student> students, String lastName) {
+		for (Student student : students) {
+			if (student.getStLastName().equals(lastName)) {
+				System.out.println(student.getStLastName() + ", " + student.getStFirstName() + ", " + student.getGrade()
+						+ ", " + student.getClassroom() + ", " + student.gettLastName() + ", "
+						+ student.gettFirstName());
+			}
+		}
+		System.out.println("---------------------------");
+	}
+
+	public static void SearchStudentBus(ArrayList<Student> students, String key) {
+		for (Student student : students) {
+			if (student.getStLastName().equals(key)) {
+				System.out.println(student.getStLastName() + ", " + student.getStFirstName() + ", " + student.getBus());
+			}
+		}
+		System.out.println("---------------------------");
+	}
+
+	public static void SearchTeacher(ArrayList<Student> students, String key) {
+		for (Student student : students) {
+			if (student.gettLastName().equals(key)) {
+				System.out.println(student.getStLastName() + ", " + student.getStFirstName());
+			}
+		}
+		System.out.println("---------------------------");
+	}
+
+	private static void SearchGrade(ArrayList<Student> students, int key) {
+		for (Student student : students) {
+			if (student.getGrade() == key) {
+				System.out.println(student.getStLastName() + ", " + student.getStFirstName());
+			}
+		}
+		System.out.println("---------------------------");
+	}
 }
