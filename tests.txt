@@ -35,10 +35,10 @@ S: DEKHTYAR B
 // short form command name, existing teacher
 // expected output: COOKUS, XUAN
 //                  ELHADDAD, SHANTE
-//		              SWEDLUND, SHARRI
-//		              CIGANEK, MANIE
-//		              COVINGTON, TOMAS
-//		              EARLY, TORY
+//                  SWEDLUND, SHARRI
+//                  CIGANEK, MANIE
+//                  COVINGTON, TOMAS
+//                  EARLY, TORY
 //                  LINHART, LELA
 
 T: FAFARD
