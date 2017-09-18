@@ -42,34 +42,40 @@ public class dataSort {
 				if (fullCommand.length() > 0) {
 					switch (action) {
 					case 'S':
-						if (CheckFormat(fullCommand)) {
-							if (fullCommand.charAt(fullCommand.length() - 1) == 'B') {
-								key = fullCommand.substring(3, fullCommand.length() - 2);
-								SearchStudentBus(students, key);
-							}
+						if (fullCommand.charAt(fullCommand.length() - 1) == 'B') {
+							key = fullCommand.substring(3, fullCommand.length() - 2);
+							SearchStudentBus(students, key);
+						} else {
 							key = fullCommand.substring(3);
 							SearchStudent(students, key);
 						}
 						break;
-					case 'T':
-						if (CheckFormat(fullCommand)) {
-							key = fullCommand.substring(3);
-							SearchTeacher(students, key);
-						}
-						break;
-					case 'B':
-						if (CheckFormat(fullCommand)) {
-							key = fullCommand.substring(3);
-						}
 
+					case 'T':
+						key = fullCommand.substring(3);
+						SearchTeacher(students, key);
 						break;
+
+					case 'B':
+						key = fullCommand.substring(3);
+						SearchBus(students, Integer.parseInt(key));
+						break;
+
 					case 'G':
-						if (CheckFormat(fullCommand)) {
+						if (fullCommand.charAt(fullCommand.length() - 1) == 'H') {
+							key = fullCommand.substring(3, 4);
+							SearchGradeHigh(students, Integer.parseInt(key));
+						} else if (fullCommand.charAt(fullCommand.length() - 1) == 'L') {
+							key = fullCommand.substring(3, 4);
+							SearchGradeLow(students, Integer.parseInt(key));
+						} else {
 							key = fullCommand.substring(3);
 							SearchGrade(students, Integer.parseInt(key));
 						}
 						break;
+
 					case 'A':
+
 						break;
 					case 'I':
 						break;
@@ -80,8 +86,7 @@ public class dataSort {
 						break;
 					}
 				}
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("Invalid Command");
 			}
 		}
@@ -132,4 +137,52 @@ public class dataSort {
 		}
 		System.out.println("---------------------------");
 	}
+
+	private static void SearchBus(ArrayList<Student> students, int key) {
+		for (Student student : students) {
+			if (student.getBus() == key) {
+				System.out.println(student.getStLastName() + ", " + student.getStFirstName());
+			}
+		}
+		System.out.println("---------------------------");
+	}
+
+	private static void SearchGradeLow(ArrayList<Student> students, int key) {
+		Student lStudent = null;
+		for (Student student : students) {
+			if (student.getGrade() == key) {
+				if (lStudent == null) {
+					lStudent = student;
+				} else {
+					if (student.getGpa() < lStudent.getGpa()) {
+						lStudent = student;
+					}
+				}
+			}
+		}
+		System.out.println(lStudent.getStLastName() + ", " + lStudent.getStFirstName()
+				+ ", " + lStudent.getGpa() + ", " + lStudent.gettLastName() + ", " 
+				+ lStudent.gettFirstName() + ", " + lStudent.getBus());
+		System.out.println("---------------------------");
+	}
+
+	private static void SearchGradeHigh(ArrayList<Student> students, int key) {
+		Student hStudent = null;
+		for (Student student : students) {
+			if (student.getGrade() == key) {
+				if (hStudent == null) {
+					hStudent = student;
+				} else {
+					if (student.getGpa() > hStudent.getGpa()) {
+						hStudent = student;
+					}
+				}
+			}
+		}
+		System.out.println(hStudent.getStLastName() + ", " + hStudent.getStFirstName()
+				+ ", " + hStudent.getGpa() + ", " + hStudent.gettLastName() + ", " 
+				+ hStudent.gettFirstName() + ", " + hStudent.getBus());
+		System.out.println("---------------------------");
+	}
+
 }
